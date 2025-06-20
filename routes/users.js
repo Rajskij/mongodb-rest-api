@@ -1,6 +1,6 @@
 import express from 'express';
 import User from '../model/user.js';
-import errorHandler from '../utils/utils.js';
+import errorHandler, { isEmpty } from '../utils/utils.js';
 
 const router = express.Router();
 
@@ -36,9 +36,26 @@ router
             res.status(200).json(user);
         });
     })
-    .patch(async (req, res) => {
+    .put(async (req, res) => {
         await errorHandler(async () => {
-            res.send();
+            if (isEmpty(req.body)) {
+                return res.status(400).json({ message: 'Request body should not be empty' });
+            }
+            
+            const result = await User.findByIdAndUpdate(
+                req.params.id,
+                {
+                    name: req.body.name,
+                    email: req.body.email,
+                    role: req.body.role,
+                    phone: req.body.phone,
+                },
+                { new: true, isValidElement: true }
+            );
+            if (!result) {
+                return res.status(404).json({ error: 'User not found' })
+            }
+            res.status(200).json(result);
         });
     })
     .delete(async (req, res) => {

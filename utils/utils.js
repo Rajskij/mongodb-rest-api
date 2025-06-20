@@ -11,4 +11,15 @@ async function errorHandler(dbRequest) {
     }
 }
 
+export function isEmpty(obj) {
+    if (obj === undefined || obj === null) {
+        return true;
+    }
+    if (Object.keys(obj).length === 0) {
+        return true;
+    }
+
+    return false;
+}
+
 export default errorHandler;

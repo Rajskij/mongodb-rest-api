@@ -1,6 +1,6 @@
 import express from 'express';
 import Project from '../model/project.js';
-import errorHandler from '../utils/utils.js';
+import errorHandler, { isEmpty } from '../utils/utils.js';
 
 const router = express.Router();
 
@@ -35,6 +35,9 @@ router
             }
             res.status(200).json(project);
         });
+    })
+    .patch(async (req, res) => {
+        
     })
     .delete(async (req, res) => {
         await errorHandler(async () => {
