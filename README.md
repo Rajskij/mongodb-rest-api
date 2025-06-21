@@ -3,8 +3,17 @@ This API is built with Express.js and uses MongoDB as the database.
 It provides basic CRUD operations for managing Users, Projects, and Tasks in a project management system.
 All responses are in JSON. Error responses will return with appropriate HTTP status codes and messages.
 
-## Postman demo:
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/docs/api.postman_collection.json)
+## 🧪 Postman Collection for Testing
+
+You can test the API using Postman collection:
+
+📁 [Download collection](./docs/ProjectManagementAPI.postman_collection.json)
+
+> To use:
+> 1. Open Postman
+> 2. Click **Import**
+> 3. Upload the `.json` file
+> 4. Start testing the endpoints!
 
 ### Base URL
 `http://localhost:3000/`
