@@ -41,7 +41,7 @@ router
             if (isEmpty(req.body)) {
                 return res.status(400).json({ message: 'Request body should not be empty' });
             }
-            
+
             const result = await User.findByIdAndUpdate(
                 req.params.id,
                 {
@@ -55,7 +55,7 @@ router
             if (!result) {
                 return res.status(404).json({ error: 'User not found' })
             }
-            res.status(200).json(result);
+            res.status(201).json(result);
         });
     })
     .delete(async (req, res) => {

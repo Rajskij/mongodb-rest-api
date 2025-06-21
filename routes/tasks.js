@@ -47,7 +47,7 @@ router
                 { status: newStatus },
                 { new: true, runValidators: true }
             );
-            res.status(200).send();
+            res.status(200).json(result);
         });
     })
     .delete(async (req, res) => {

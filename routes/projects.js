@@ -37,7 +37,26 @@ router
         });
     })
     .patch(async (req, res) => {
-        
+        if (isEmpty(req.body)) {
+            return res.status(400).json({ message: 'Request body should not be empty' });
+        }
+        const startDate = req.body.startDate;
+        const endDate = req.body.endDate;
+
+        await errorHandler(async () => {
+            const result = await Project.findByIdAndUpdate(
+                req.params.id,
+                {
+                    start_date: req.body.startDate,
+                    end_date: req.body.endDate
+                },
+                { new: true, runValidators: true }
+            )
+            if (!result) {
+                return res.status(404).json({ error: 'Project not found' })
+            }
+            res.status(200).json(result);
+        });
     })
     .delete(async (req, res) => {
         await errorHandler(async () => {
