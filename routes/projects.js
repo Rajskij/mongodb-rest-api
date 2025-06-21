@@ -26,6 +26,37 @@ router
     });
 
 router
+    .route('/getDate')
+    .get(async (req, res) => {
+        if (!req.query.endDate) {
+            return res.status(400).json({ error: 'Status query parameter is required' });
+        }
+        const endDate = new Date(req.query.endDate);
+        if (isNaN(endDate.getTime())) {
+            return res.status(400).json({ error: 'Invalid date format' });
+        }
+        await errorHandler(async () => {
+            const result = await Project.aggregate([
+                {
+                    $match: {
+                        end_date: { $gt: endDate }
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        name: 1,
+                        start_date: 1,
+                        end_date: 1
+                    }
+                }
+            ]);
+
+            res.status(200).json(result);
+        });
+    });
+
+router
     .route('/:id')
     .get(async (req, res) => {
         await errorHandler(async () => {

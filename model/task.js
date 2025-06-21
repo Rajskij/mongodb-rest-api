@@ -9,7 +9,9 @@ const task = new mongoose.Schema({
         type: String,
         enum: ['ToDo', 'InProgress', 'Testing', 'Done'],
         default: 'ToDo',
-        required: true
+        required: true,
+        // index within schema
+        index: true
     },
     assigned_to: String,
     project_id: {

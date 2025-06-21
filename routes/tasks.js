@@ -1,20 +1,20 @@
 import express from 'express';
 import Task from '../model/task.js';
-import defaultHandler from '../utils/utils.js';
+import errorHandler from '../utils/utils.js';
 
 const router = express.Router();
 
 router
     .route('/')
     .get(async (req, res) => {
-        await defaultHandler(async () => {
+        await errorHandler(async () => {
             const response = await Task.find();
             res.status(200).json(response);
         });
     })
     .post(async (req, res) => {
         const body = req.body;
-        await defaultHandler(async () => {
+        await errorHandler(async () => {
             const task = await Task.create({
                 title: body.title,
                 status: body.status,
@@ -27,9 +27,35 @@ router
     });
 
 router
+    .route('/status')
+    .get(async (req, res) => {
+        if (!req.query.status) {
+            return res.status(400).json({ error: 'Status query parameter is required' });
+        }
+        await errorHandler(async () => {
+            const result = await Task.aggregate([
+                {
+                    $match: {
+                        status: req.query.status
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        title: 1,
+                        status: 1
+                    }
+                }
+            ]);
+
+            res.status(200).json(result);
+        });
+    });
+
+router
     .route('/:id')
     .get(async (req, res) => {
-        await defaultHandler(async () => {
+        await errorHandler(async () => {
             const task = await Task.findById({ _id: req.params.id });
             if (!task) {
                 return res.status(404).json({ error: 'Task not found' });
@@ -38,7 +64,7 @@ router
         });
     })
     .patch(async (req, res) => {
-        await defaultHandler(async () => {
+        await errorHandler(async () => {
             const id = req.body.id;
             const newStatus = req.body.status;
 
@@ -51,7 +77,7 @@ router
         });
     })
     .delete(async (req, res) => {
-        await defaultHandler(async () => {
+        await errorHandler(async () => {
             const result = await Task.deleteOne({ _id: req.params.id });
 
             if (result.deletedCount === 0) {

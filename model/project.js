@@ -15,8 +15,13 @@ const project = new mongoose.Schema({
     },
     end_date: {
         type: Date,
-        required: true
+        required: true,
+        // index within schema
+        index: true
     }
 });
+
+// create index via function
+project.index({ name: 1 });
 
 export default mongoose.model('Project', project)
