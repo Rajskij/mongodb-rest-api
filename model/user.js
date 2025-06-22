@@ -12,8 +12,8 @@ const user = new mongoose.Schema({
         required: [true, "Email is require"],
         // custom validator
         validate: {
-            validator: () => {
-                return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+            validator: (value) => {
+                return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
             },
             message: 'Email is not a valid!'
         }
