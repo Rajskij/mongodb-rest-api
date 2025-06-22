@@ -17,10 +17,6 @@ try {
 
 app.use(express.json());
 
-// TODO:
-// add custom validation
-// add custom field
-
 app.use('/users', users);
 app.use('/tasks', tasks);
 app.use('/projects', projects);
