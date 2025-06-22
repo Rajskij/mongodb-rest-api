@@ -20,15 +20,15 @@ You can test the API using Postman collection:
 
 # Collections and Routes
 
-### Users (/api/users)
+### Users (/users)
 
 | Method | Route            | Description       |
 | ------ | ---------------- | ----------------- |
-| GET    | `/api/users`     | Get all users     |
-| POST   | `/api/users`     | Create a new user |
-| GET    | `/api/users/:id` | Get user by ID    |
-| PUT    | `/api/users/:id` | Update user by ID |
-| DELETE | `/api/users/:id` | Delete user by ID |
+| GET    | `/users`     | Get all users     |
+| POST   | `/users`     | Create a new user |
+| GET    | `/users/:id` | Get user by ID    |
+| PUT    | `/users/:id` | Update user by ID |
+| DELETE | `/users/:id` | Delete user by ID |
 
 ### User Object
 ```json
@@ -40,14 +40,15 @@ You can test the API using Postman collection:
 }
 ```
 
-##  Projects (/api/projects)
-| Method | Route               | Description                |
-| ------ | ------------------- | -------------------------- |
-| GET    | `/api/projects`     | Get all projects           |
-| POST   | `/api/projects`     | Create a new project       |
-| GET    | `/api/projects/:id` | Get project by ID          |
-| PATCH  | `/api/projects/:id` | Update project dates by ID |
-| DELETE | `/api/projects/:id` | Delete project by ID       |
+##  Projects (/projects)
+| Method | Route                                  | Description                |
+| ------ | -------------------------------------- | -------------------------- |
+| GET    | `/projects`                            | Get all projects           |
+| POST   | `/projects`                            | Create a new project       |
+| GET    | `/projects/:id`                        | Get project by ID          |
+| PATCH  | `/projects/:id`                        | Update project dates by ID |
+| DELETE | `/projects/:id`                        | Delete project by ID       |
+| GET    | `/projects/getDate/?endDate=2025.06.15`| Get filtered status        |
 
 ### Project Object
 ```json
@@ -59,15 +60,15 @@ You can test the API using Postman collection:
 }
 ```
 
-## Tasks (/api/tasks)
-| Method | Route            | Description                     |
-| ------ | ---------------- | ------------------------------- |
-| GET    | `/api/tasks`     | Get all tasks                   |
-| POST   | `/api/tasks`     | Create a new task               |
-| GET    | `/api/tasks/:id` | Get task by ID                  |
-| PATCH  | `/api/tasks/:id` | Update task status by task body |
-| DELETE | `/api/tasks/:id` | Delete task by ID               |
-
+## Tasks (/tasks)
+| Method | Route                         | Description                     |
+| ------ | ----------------------------- | ------------------------------- |
+| GET    | `/tasks`                      | Get all tasks                   |
+| POST   | `/tasks`                      | Create a new task               |
+| GET    | `/tasks/:id`                  | Get task by ID                  |
+| PATCH  | `/tasks/:id`                  | Update task status by task body |
+| DELETE | `/tasks/:id`                  | Delete task by ID               |
+| GET    | `/tasks/status/?status=value` | Get filtered status             |
 
 ### Task Object
 ```json

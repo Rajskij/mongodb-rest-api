@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Alice\",\n    \"email\": \"alice@test.com\",\n    \"role\": \"Developer\"\n}",
+					"raw": "{\n    \"name\": \"Alice\",\n    \"email\": \"alice@test.com\",\n    \"role\": \"Developer111\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -245,14 +245,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/tasks/6855af0f0a6fa6857b998885",
+					"raw": "localhost:3000/users/6855b354596966b1b6bccda7",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"tasks",
-						"6855af0f0a6fa6857b998885"
+						"users",
+						"6855b354596966b1b6bccda7"
 					]
 				}
 			},
@@ -321,14 +321,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/users/6855b354596966b1b6bccda7",
+					"raw": "localhost:3000/users/6855c8952551aae6342a084a",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"users",
-						"6855b354596966b1b6bccda7"
+						"6855c8952551aae6342a084a"
 					]
 				}
 			},
@@ -386,7 +386,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"phone\": \"777-77-77\"\n}",
+					"raw": "{\n    \"name\": \"Bobby\",\n    \"email\": \"bobby@test.com\",\n    \"role\": \"FE Developer\",\n    \"phone\": \"777-77-71\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -480,7 +480,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"Create landing page\",\n    \"status\": \"InProgress\",\n    \"userId\": \"685598c9bac20261ad6e90be\",\n    \"projectId\": \"6855ae4425718af8901de93b\",\n    \"dueDate\": \"2025-08-17\"\n}",
+					"raw": "{\n    \"title\": \"Create landing page\",\n    \"status\": \"ToDo\",\n    \"userId\": \"685598c9bac20261ad6e90be\",\n    \"projectId\": \"6855ae4425718af8901de93b\",\n    \"dueDate\": \"2025-08-17\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -649,14 +649,97 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/tasks/6855af0f0a6fa6857b998885",
+					"raw": "localhost:3000/tasks/6855df03851cd7d0e2b7c4a2",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"tasks",
-						"6855af0f0a6fa6857b998885"
+						"6855df03851cd7d0e2b7c4a2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/tasks/6855af0f0a6fa6857b998885",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tasks",
+								"6855af0f0a6fa6857b998885"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "213"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d5-LDLhoaMmWQ+7oK+nFUBqLOXH3Ak\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 19:09:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6855af0f0a6fa6857b998885\",\n    \"title\": \"Create landing page\",\n    \"status\": \"InProgress\",\n    \"assigned_to\": \"685598c9bac20261ad6e90be\",\n    \"project_id\": \"6855ae4425718af8901de93b\",\n    \"due_date\": \"2025-08-17T00:00:00.000Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "get agg status",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tasks/status/?status=ToDo",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"status",
+						""
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "ToDo"
+						}
 					]
 				}
 			},
@@ -788,15 +871,24 @@
 				},
 				"method": "PATCH",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \" \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "localhost:3000/tasks/6855b354596966b1b6bccda7",
+					"raw": "localhost:3000/tasks/6855df03851cd7d0e2b7c4a2",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"tasks",
-						"6855b354596966b1b6bccda7"
+						"6855df03851cd7d0e2b7c4a2"
 					]
 				}
 			},
@@ -867,7 +959,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Website Redesign\",\n    \"description\": \"Redesign the company website with modern UI/UX\",\n    \"startDate\": \"2025-06-01\",\n    \"endDate\": \"2025-07-15\"\n}",
+					"raw": "{\n    \"name\": \"Backend Redesign\",\n    \"description\": \"Create CRUD app\",\n    \"startDate\": \"2025-06-01\",\n    \"endDate\": \"2025-11-15\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1036,14 +1128,97 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/tasks/6855af0f0a6fa6857b998885",
+					"raw": "localhost:3000/projects/6855aef90a6fa6857b998881",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"tasks",
-						"6855af0f0a6fa6857b998885"
+						"projects",
+						"6855aef90a6fa6857b998881"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/projects/6855aef90a6fa6857b998881",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"projects",
+								"6855aef90a6fa6857b998881"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "209"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d1-qaBCRNItVEpOGwmu3sCDlmjqsIE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 19:35:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6855aef90a6fa6857b998881\",\n    \"name\": \"Website Redesign\",\n    \"description\": \"Redesign the company website with modern UI/UX\",\n    \"start_date\": \"2025-06-01T00:00:00.000Z\",\n    \"end_date\": \"2025-11-15T00:00:00.000Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "get agg project",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/projects/getDate/?endDate=2025.06.15",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"projects",
+						"getDate",
+						""
+					],
+					"query": [
+						{
+							"key": "endDate",
+							"value": "2025.06.15"
+						}
 					]
 				}
 			},
@@ -1112,14 +1287,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/projects/6855b354596966b1b6bccda7",
+					"raw": "localhost:3000/projects/6855ae4425718af8901de93b",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"projects",
-						"6855b354596966b1b6bccda7"
+						"6855ae4425718af8901de93b"
 					]
 				}
 			},
@@ -1175,15 +1350,24 @@
 				},
 				"method": "PATCH",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2024-12-01\",\n    \"endDate\": \"2025-07-15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "localhost:3000/tasks/6855b354596966b1b6bccda7",
+					"raw": "localhost:3000/projects/6855f3fc379f8dee067a7d0f",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"tasks",
-						"6855b354596966b1b6bccda7"
+						"projects",
+						"6855f3fc379f8dee067a7d0f"
 					]
 				}
 			},
